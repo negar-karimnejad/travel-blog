@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import Route from "../ui/Route";
 import Button from "../ui/Button";
+import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
   return (
@@ -24,7 +25,7 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <div className="flex justify-center gap-5 flex-1 max-md:hidden">
+        <div className="flex justify-end gap-5 flex-1 max-md:hidden">
           <Button
             text="Log In"
             onClick={() => null}
@@ -35,6 +36,9 @@ export default function Navbar() {
             onClick={() => null}
             aria="Sign up button"
           ></Button>
+        </div>
+        <div>
+          <MobileMenu />
         </div>
       </div>
     </nav>

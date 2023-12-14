@@ -1,3 +1,9 @@
+import Hero from "@/components/shared/Hero";
+
 export default function Home() {
-  return <div> Page</div>;
+  return (
+    <>
+      <Hero />
+    </>
+  );
 }

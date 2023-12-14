@@ -2,15 +2,16 @@ import { navLinks } from "@/constants";
 import Link from "next/link";
 import { useState } from "react";
 import { CgClose, CgMenuGridO } from "react-icons/cg";
+import { FaFacebookSquare } from "react-icons/fa";
 import {
-  FaSquareXTwitter,
   FaSquareInstagram,
   FaSquareSnapchat,
+  FaSquareXTwitter,
 } from "react-icons/fa6";
-import { FaFacebookSquare } from "react-icons/fa";
 
 import Button from "../ui/Button";
 import Route from "../ui/Route";
+import useMenuActive from "../../hooks/useMenuActive";
 
 export default function MobileMenu() {
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
@@ -53,6 +54,7 @@ export default function MobileMenu() {
                     route={link.route}
                     label={link.label}
                     onClick={() => setOpenMobileMenu(false)}
+                    isActive={useMenuActive(link.route)}
                   />
                 </li>
               ))}

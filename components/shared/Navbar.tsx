@@ -2,12 +2,29 @@
 
 import { navLinks } from "@/constants";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Route from "../ui/Route";
 import Button from "../ui/Button";
 import MobileMenu from "./MobileMenu";
+import useMenuActive from "../../hooks/useMenuActive";
 
 export default function Navbar() {
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolling(true);
+      } else {
+        setIsScrolling(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <nav className="py-4 w-full">
       <div className="w-[95%] mx-auto max-w-[1450px] flex items-center justify-between pb-5 border-b border-gray-100">
@@ -21,7 +38,11 @@ export default function Navbar() {
         <ul className="flex items-center justify-center gap-16 flex-2 max-md:hidden">
           {navLinks.map((link, index) => (
             <li key={index}>
-              <Route route={link.route} label={link.label} />
+              <Route
+                route={link.route}
+                label={link.label}
+                isActive={useMenuActive(link.route)}
+              />
             </li>
           ))}
         </ul>

@@ -14,7 +14,7 @@ export default function Route({ route, onClick, isActive, label }: routeProps) {
     <Link
       href={route}
       onClick={onClick}
-      className={clsx(isActive && "text-primary rounded-none bg-transparent")}
+      className={clsx(isActive && "text-primary")}
     >
       {label}
     </Link>

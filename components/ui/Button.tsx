@@ -2,7 +2,7 @@ import React from "react";
 
 interface buttonProps {
   text: string;
-  onClick: () => void;
+  onClick?: () => void;
   aria: string;
 }
 export default function Button({ text, onClick, aria }: buttonProps) {

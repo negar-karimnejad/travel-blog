@@ -44,17 +44,17 @@ export default function Hero() {
         ))}
         <div className="grid grid-cols-3 max-lg:grid-cols-1 gap-8">
           {bottomFeatured.map((post) => (
-            <article className="flex flex-col gap-3 text-center relative">
+            <article
+              key={post.id}
+              className="flex flex-col gap-3 text-center relative"
+            >
               <Link
                 href={{
                   pathname: `blog/${post.id}`,
                   query: { ...post },
                 }}
               >
-                <div
-                  key={post.id}
-                  className="h-72 relative overflow-hidden w-full shadow-xl"
-                >
+                <div className="h-72 relative overflow-hidden w-full shadow-xl">
                   <img
                     src={post.image_path}
                     alt={`Image for ${post.title}`}

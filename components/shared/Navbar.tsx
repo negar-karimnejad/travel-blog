@@ -8,9 +8,16 @@ import Button from "../ui/Button";
 import MobileMenu from "./MobileMenu";
 import useMenuActive from "../../hooks/useMenuActive";
 import clsx from "clsx";
+import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/utils/auth";
 
-export default function Navbar() {
+export default async function Navbar() {
+  const router = useRouter();
   const [isScrolling, setIsScrolling] = useState(false);
+  // const session = await getServerSession(authOptions);
+  // console.log(session);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,12 +68,12 @@ export default function Navbar() {
         <div className="flex justify-end gap-5 flex-1 max-md:hidden">
           <Button
             text="Log In"
-            onClick={() => null}
+            onClick={() => router.push("/access")}
             aria="Log in button"
           ></Button>
           <Button
             text="Sign Up"
-            onClick={() => null}
+            onClick={() => signOut()}
             aria="Sign up button"
           ></Button>
         </div>

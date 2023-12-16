@@ -1,17 +1,15 @@
 "use client";
 
 import { navLinks } from "@/constants";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import Route from "../ui/Route";
-import Button from "../ui/Button";
-import MobileMenu from "./MobileMenu";
-import useMenuActive from "../../hooks/useMenuActive";
 import clsx from "clsx";
-import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/utils/auth";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import useMenuActive from "../../hooks/useMenuActive";
+import Button from "../ui/Button";
+import Route from "../ui/Route";
+import MobileMenu from "./MobileMenu";
 
 export default async function Navbar() {
   const router = useRouter();

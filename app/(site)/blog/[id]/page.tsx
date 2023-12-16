@@ -70,6 +70,10 @@ export default function SingleBlog({
               height={500}
               className="rounded-full w-20 h-20 object-cover"
             />
+            <div className="flex gap-1 flex-col">
+              <span>{searchParams.authorName}</span>
+              <span>{searchParams.publishDate}</span>
+            </div>
           </div>
         </article>
       </div>

@@ -1,3 +1,5 @@
+import BlogCard from "@/components/shared/BlogCard";
+
 interface searchParamsType {
   id: string;
   title: string;
@@ -17,9 +19,6 @@ export default function SingleBlog({
   searchParams: searchParamsType;
 }) {
   return (
-    <>
-      <div>Single Blog</div>
-      <h1>{searchParams.title}</h1>
-    </>
+      <BlogCard/>
   );
 }

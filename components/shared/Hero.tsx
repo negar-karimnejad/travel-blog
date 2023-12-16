@@ -7,6 +7,7 @@ export default function Hero() {
   const featuredPosts = blogData.filter((item) => item.featured);
   const topFeatured = featuredPosts.slice(0, 1);
   const bottomFeatured = featuredPosts.slice(1, 4);
+
   return (
     <section className="relative">
       <div className="w-[95%] mx-auto max-w-[1450px] z-1">

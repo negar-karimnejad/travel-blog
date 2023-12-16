@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function CreateForm() {
-  return (
-    <div>CreateForm</div>
-  )
+  return <div>CreateForm</div>;
 }

@@ -1,6 +1,5 @@
 import Overlay from "@/components/ui/Overlay";
 import Image from "next/image";
-import React from "react";
 
 export default function About() {
   return (

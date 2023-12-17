@@ -1,6 +1,6 @@
 import React from "react";
 interface tagProps {
-  text: string[];
+  text: string;
 }
 export default function Tag({ text }: tagProps) {
   return (

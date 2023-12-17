@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
-import "./globals.css";
 import Footer from "@/components/shared/Footer";
-import AuthProvider from "@/context/AuthProvider";
-import { getServerSession } from "next-auth";
-import { authOptions } from "./utils/auth";
 import Navbar from "@/components/shared/Navbar";
-import prisma from "./utils/db";
+import AuthProvider from "@/context/AuthProvider";
+import type { Metadata } from "next";
+import { getServerSession } from "next-auth";
+import { Roboto } from "next/font/google";
+import { EdgeStoreProvider } from '../lib/edgestore';
+import { authOptions } from "./utils/auth";
+import "./globals.css";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -30,9 +30,11 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${roboto.className} overflow-x-hidden bg-light`}>
         <AuthProvider>
-          <Navbar user={user as any} />
-          {children}
-          <Footer />
+          <EdgeStoreProvider>
+            <Navbar user={user as any} />
+            {children}
+            <Footer />
+          </EdgeStoreProvider>
         </AuthProvider>
       </body>
     </html>

@@ -1,15 +1,15 @@
 "use client";
 import { useEdgeStore } from "@/lib/edgestore";
 import { useEffect, useState } from "react";
-import { SingleImageDropzone } from "../ui/SingleImageDropZone";
 import { userTypes } from "@/types/userTypes";
 import { createPost } from "@/app/actions";
 import Form from "../ui/Form";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
+import { SingleImageDropzone } from "../ui/SingleImageDropZone";
 
 export default function CreateForm({ user }: { user: userTypes }) {
-  const [file, setFile] = useState();
+  const [file, setFile] = useState<File>();
   const { edgestore } = useEdgeStore();
   const [imagePath, setImagePath] = useState("");
 
@@ -39,7 +39,15 @@ export default function CreateForm({ user }: { user: userTypes }) {
           </h2>
         ) : (
           <>
-            {/* <SingleImageDropzone /> */}
+            <SingleImageDropzone
+              onChange={(file) => {
+                setFile(file);
+              }}
+              width={200}
+              height={200}
+              value={file}
+            />
+
             <Form
               action={createPost}
               onSubmit={() => setFile(undefined)}
@@ -68,7 +76,7 @@ export default function CreateForm({ user }: { user: userTypes }) {
                 <option value="Discovery">Discovery</option>
                 <option value="Wonderlust">Wonderlust</option>
               </select>
-              <Input type="hidden" name="email" value={user?.email || ""} />
+              <Input name="email" type="hidden" value={user?.email || ""} />{" "}
               <Button type="submit" text="Create" aria="create blog" />
             </Form>
           </>

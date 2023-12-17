@@ -6,9 +6,9 @@ import { useDropzone, type DropzoneOptions } from "react-dropzone";
 import { twMerge } from "tailwind-merge";
 
 const variants = {
-  base: "relative rounded-md flex justify-center items-center flex-col cursor-pointer min-h-[150px] min-w-[200px] border border-dashed border-gray-400 dark:border-gray-300 transition-colors duration-200 ease-in-out",
+  base: "relative rounded-md flex justify-center items-center flex-col cursor-pointer min-h-[150px] min-w-full border border-dashed border-gray-400 dark:border-gray-300 transition-colors duration-200 ease-in-out",
   image:
-    "border-0 p-0 min-h-0 min-w-0 relative shadow-md bg-slate-200 dark:bg-slate-900 rounded-md",
+    "border-0 p-0 min-h-0 min-w-full relative shadow-md bg-slate-200 dark:bg-slate-900 rounded-md",
   active: "border-2",
   disabled:
     "bg-gray-200 border-gray-300 cursor-default pointer-events-none bg-opacity-30 dark:bg-gray-700",
@@ -189,7 +189,7 @@ const Button = React.forwardRef<
         // base
         "focus-visible:ring-ring inline-flex cursor-pointer items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50",
         // color
-        "border border-gray-400 text-gray-400 shadow hover:bg-gray-100 hover:text-gray-500 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-700",
+        "border border-gray-400 text-tertiary shadow hover:bg-primary hover:text-white ",
         // size
         "h-6 rounded-md px-2 text-xs",
         className

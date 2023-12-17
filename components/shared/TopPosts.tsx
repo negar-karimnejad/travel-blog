@@ -1,4 +1,5 @@
 import { PostTypes } from "@/types/postTypes";
+import { formatDate } from "@/utils/FormatDate";
 import Image from "next/image";
 import Link from "next/link";
 import Overlay from "../ui/Overlay";
@@ -38,9 +39,9 @@ const TopPosts: React.FC<{ posts: PostTypes[] }> = ({ posts }) => {
               </h3>
               <div className="flex gap-3 mt-2 justify-center">
                 <span className="font-light">By: {post.user.name}</span>
-                {/* <span className="font-light italic">
-                  By: {post.createdAt}
-                </span> */}
+                <span className="font-light italic">
+                  By: {formatDate(post.createdAt)}
+                </span>
               </div>
             </article>
           </Link>

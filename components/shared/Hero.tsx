@@ -1,8 +1,9 @@
 import { PostTypes } from "@/types/postTypes";
+import { formatDate } from "@/utils/FormatDate";
+import Image from "next/image";
 import Link from "next/link";
 import Overlay from "../ui/Overlay";
 import Tag from "../ui/Tag";
-import Image from "next/image";
 
 const Hero: React.FC<{ posts: PostTypes[] }> = ({ posts }) => {
   const featuredPosts = posts.filter((item) => item.featured);
@@ -32,7 +33,7 @@ const Hero: React.FC<{ posts: PostTypes[] }> = ({ posts }) => {
                 />
               )}
               <span>{post.user.name}</span>
-              {/* <span className="italic">{post.createdAt}</span> */}
+              <span className="italic">{formatDate(post.createdAt)}</span>
             </div>
             <Link href={`blog/${post.id}`}>
               <div className="max-h-[600px] relative overflow-hidden shadow-xl">

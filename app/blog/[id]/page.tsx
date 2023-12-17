@@ -1,4 +1,5 @@
 import Tag from "@/components/ui/Tag";
+import { PostTypes } from "@/types/postTypes";
 import Image from "next/image";
 import {
   AiOutlineFacebook,
@@ -6,36 +7,33 @@ import {
   AiOutlineTwitter,
 } from "react-icons/ai";
 
-interface searchParamsType {
-  id: string;
-  title: string;
-  image_path: string;
-  paragraph: string;
-  featured: boolean;
-  topPost: boolean;
-  tags: string[];
-  authorImage: string;
-  authorName: string;
-  publishDate: string;
-}
+// interface searchParamsType {
+//   id: string;
+//   title: string;
+//   img: string;
+//   paragraph: string;
+//   featured: boolean;
+//   topPost: boolean;
+//   tags: string;
+//   authorImage: string;
+//   authorName: string;
+//   publishDate: string;
+// }
 
-export default function SingleBlog({
-  searchParams,
-}: {
-  searchParams: searchParamsType;
-}) {
+export default function SingleBlog() {
+
   return (
     <div className="w-[95%] mx-auto max-w-[1450px]">
       <div className="w-full h-[400px] relative mb-5">
         <Image
-          src={searchParams.image_path}
+          src={searchParams.img as string}
           fill
           alt={`Image for blog`}
           className="object-cover"
         />
       </div>
 
-      <Tag text={searchParams.tags} />
+      <Tag text={searchParams.category} />
 
       <h2 className="font-extrabold text-4xl uppercase text-tertiary my-3">
         {searchParams.title}
@@ -53,25 +51,25 @@ export default function SingleBlog({
         </aside>
         <article>
           <p className="textxl">
-            {searchParams.paragraph}
-            {searchParams.paragraph}
-            {searchParams.paragraph}
-            {searchParams.paragraph}
-            {searchParams.paragraph}
-            {searchParams.paragraph}
-            {searchParams.paragraph}
+            {searchParams.desc}
+            {searchParams.desc}
+            {searchParams.desc}
+            {searchParams.desc}
+            {searchParams.desc}
+            {searchParams.desc}
+            {searchParams.desc}
           </p>
           <div className="mt-5 gap-5 items-center flex">
             <Image
-              src={searchParams.authorImage}
-              alt={`Image for ${searchParams.authorName}`}
+              src={searchParams.user?.image as string}
+              alt={`Image for ${searchParams.user?.name}`}
               width={500}
               height={500}
               className="rounded-full w-20 h-20 object-cover"
             />
             <div className="flex gap-1 flex-col">
-              <span>{searchParams.authorName}</span>
-              <span>{searchParams.publishDate}</span>
+              <span>{searchParams.user?.name}</span>
+              {/* <span>{searchParams.createdAt}</span> */}
             </div>
           </div>
         </article>

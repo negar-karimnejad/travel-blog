@@ -14,8 +14,6 @@ import MobileMenu from "./MobileMenu";
 export default async function Navbar() {
   const router = useRouter();
   const [isScrolling, setIsScrolling] = useState(false);
-  // const session = await getServerSession(authOptions);
-  // console.log(session);
 
   useEffect(() => {
     const handleScroll = () => {

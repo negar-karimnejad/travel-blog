@@ -1,12 +1,20 @@
+import { authOptions } from "@/app/utils/auth";
 import GoogleSignInButton from "@/components/shared/GoogleSignInButton";
+import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import {
   FacebookLoginButton,
   GithubLoginButton,
 } from "react-social-login-buttons";
 
 export default function page() {
+  // const session = await getServerSession(authOptions);
+  // if (session) {
+  //   return redirect("/");
+  // }
+
   return (
     <div className="my-24 sm:mx-auto sm:max-w-4xl px-5">
       <div className="bg-white shadow sm:rounded-lg flex gap-5 justify-between h-96 overflow-hidden">

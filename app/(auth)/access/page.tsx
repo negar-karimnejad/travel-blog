@@ -1,19 +1,16 @@
 import { authOptions } from "@/app/utils/auth";
-import GoogleSignInButton from "@/components/shared/GoogleSignInButton";
+import SocialSignInButtons from "@/components/shared/SocialSignInButtons";
+import { Session } from "inspector";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import {
-  FacebookLoginButton,
-  GithubLoginButton,
-} from "react-social-login-buttons";
 
-export default function page() {
-  // const session = await getServerSession(authOptions);
-  // if (session) {
-  //   return redirect("/");
-  // }
+export default async function Login() {
+  const session: Session | null = await getServerSession(authOptions);
+  if (session) {
+    return redirect("/");
+  }
 
   return (
     <div className="my-24 sm:mx-auto sm:max-w-4xl px-5">
@@ -27,9 +24,7 @@ export default function page() {
           <span className="text-sm">
             Log in or Sign up with the links below
           </span>
-          <GoogleSignInButton />
-          <FacebookLoginButton />
-          <GithubLoginButton />
+          <SocialSignInButtons />
         </div>
         <Image
           src="/assets/access.jpg"

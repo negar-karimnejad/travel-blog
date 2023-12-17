@@ -40,7 +40,7 @@ const TopPosts: React.FC<{ posts: PostTypes[] }> = ({ posts }) => {
               <div className="flex gap-3 mt-2 justify-center">
                 <span className="font-light">By: {post.user.name}</span>
                 <span className="font-light italic">
-                  By: {formatDate(post.createdAt)}
+                  {formatDate(post.createdAt.toString())}
                 </span>
               </div>
             </article>

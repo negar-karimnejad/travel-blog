@@ -33,7 +33,9 @@ const Hero: React.FC<{ posts: PostTypes[] }> = ({ posts }) => {
                 />
               )}
               <span>{post.user.name}</span>
-              <span className="italic">{formatDate(post.createdAt)}</span>
+              <span className="italic">
+                {formatDate(post.createdAt.toString())}
+              </span>
             </div>
             <Link href={`blog/${post.id}`}>
               <div className="max-h-[600px] relative overflow-hidden shadow-xl">
@@ -67,7 +69,9 @@ const Hero: React.FC<{ posts: PostTypes[] }> = ({ posts }) => {
               <h3 className="text-sm font-extrabold uppercase text-tertiary px-5">
                 {post.title}
               </h3>
-              <span className="italic font-light">{post.user.name}</span>
+              <span className="italic font-light">
+                {formatDate(post.createdAt.toString())}
+              </span>
             </article>
           ))}
         </div>

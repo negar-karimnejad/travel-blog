@@ -71,7 +71,7 @@ export default function CreateForm({ user }: { user: userTypes }) {
                   Choose Tag
                 </option>
                 <option value="Adventure">Adventure</option>
-                <option value="Colture">Colture</option>
+                <option value="Culture">Colture</option>
                 <option value="Journey">Journey</option>
                 <option value="Discovery">Discovery</option>
                 <option value="Wonderlust">Wonderlust</option>

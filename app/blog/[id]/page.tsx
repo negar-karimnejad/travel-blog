@@ -1,5 +1,6 @@
 import Tag from "@/components/ui/Tag";
 import { PostTypes } from "@/types/postTypes";
+import { formatDate } from "@/utils/FormatDate";
 import Image from "next/image";
 import {
   AiOutlineFacebook,
@@ -7,20 +8,12 @@ import {
   AiOutlineTwitter,
 } from "react-icons/ai";
 
-// interface searchParamsType {
-//   id: string;
-//   title: string;
-//   img: string;
-//   paragraph: string;
-//   featured: boolean;
-//   topPost: boolean;
-//   tags: string;
-//   authorImage: string;
-//   authorName: string;
-//   publishDate: string;
-// }
-
-export default function SingleBlog() {
+export default function SingleBlog({
+  searchParams,
+}: {
+  searchParams: PostTypes;
+}) {
+  console.log(searchParams);
 
   return (
     <div className="w-[95%] mx-auto max-w-[1450px]">
@@ -69,7 +62,7 @@ export default function SingleBlog() {
             />
             <div className="flex gap-1 flex-col">
               <span>{searchParams.user?.name}</span>
-              {/* <span>{searchParams.createdAt}</span> */}
+              <span>{formatDate(searchParams.createdAt.toString())}</span>
             </div>
           </div>
         </article>

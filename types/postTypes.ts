@@ -1,4 +1,4 @@
-// import { User } from "@prisma/client";
+import { User } from "@prisma/client";
 
 export interface PostTypes {
   id: string;
@@ -9,5 +9,5 @@ export interface PostTypes {
   featured: boolean;
   topPost: boolean;
   category: string;
-//   user: User;
+  user: User;
 }

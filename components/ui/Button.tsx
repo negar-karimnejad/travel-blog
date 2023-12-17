@@ -4,13 +4,15 @@ interface buttonProps {
   text: string;
   onClick?: () => void;
   aria: string;
+  type?: "button" | "submit" | "reset";
 }
-export default function Button({ text, onClick, aria }: buttonProps) {
+export default function Button({ text, onClick, aria, type }: buttonProps) {
   return (
     <button
       className="bg-primary py-1 px-4 rounded-lg hover:bg-primary/80 duration-500 inline-block text-white"
       onClick={onClick}
       aria-label={aria}
+      type={type}
     >
       {text}
     </button>

@@ -2,8 +2,13 @@
 import { useEdgeStore } from "@/lib/edgestore";
 import { useEffect, useState } from "react";
 import { SingleImageDropzone } from "../ui/SingleImageDropZone";
+import { userTypes } from "@/types/userTypes";
+import { createPost } from "@/app/actions";
+import Form from "../ui/Form";
+import Input from "../ui/Input";
+import Button from "../ui/Button";
 
-export default function CreateForm({ user }: { user: any }) {
+export default function CreateForm({ user }: { user: userTypes }) {
   const [file, setFile] = useState();
   const { edgestore } = useEdgeStore();
   const [imagePath, setImagePath] = useState("");
@@ -33,7 +38,40 @@ export default function CreateForm({ user }: { user: any }) {
             Please Sign up or Log in to create a post!
           </h2>
         ) : (
-          <SingleImageDropzone />
+          <>
+            {/* <SingleImageDropzone /> */}
+            <Form
+              action={createPost}
+              onSubmit={() => setFile(undefined)}
+              className="flex flex-col gap-5 mt-5"
+            >
+              <Input type="hidden" name="image" value={imagePath} />
+              <Input name="title" type="text" placeholder="Enter Title" />
+              <textarea
+                required
+                name="description"
+                rows={10}
+                placeholder="Write Here..."
+                className="text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-primary sm:text-sm sm:leading-6 border w-full border-gray-200 p-2 rounded-md py-1.5"
+              ></textarea>
+              <select
+                name="category"
+                required
+                className="text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-primary sm:text-sm sm:leading-6 border w-full border-gray-200 p-2 rounded-md py-1.5"
+              >
+                <option value="" disabled selected>
+                  Choose Tag
+                </option>
+                <option value="Adventure">Adventure</option>
+                <option value="Colture">Colture</option>
+                <option value="Journey">Journey</option>
+                <option value="Discovery">Discovery</option>
+                <option value="Wonderlust">Wonderlust</option>
+              </select>
+              <Input type="hidden" name="email" value={user?.email || ""} />
+              <Button type="submit" text="Create" aria="create blog" />
+            </Form>
+          </>
         )}
       </div>
     </div>

@@ -20,6 +20,7 @@ interface NavbraProps {
 const Navbar: React.FC<NavbraProps> = ({ user }) => {
   const router = useRouter();
   const [isScrolling, setIsScrolling] = useState(false);
+  const [openUserMenu, setOpenUserMenu] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,6 +77,7 @@ const Navbar: React.FC<NavbraProps> = ({ user }) => {
               height={50}
               alt={`Image for ${user.name}`}
               className="rounded-full border-4 border-primary cursor-pointer"
+              onClick={() => setOpenUserMenu(!openUserMenu)}
             />
           </div>
         ) : (
@@ -87,12 +89,24 @@ const Navbar: React.FC<NavbraProps> = ({ user }) => {
             ></Button>
             <Button
               text="Sign Up"
-              onClick={() => signOut()}
+              onClick={() => router.push("/access")}
               aria="Sign up button"
             ></Button>
           </div>
         )}
-
+        {openUserMenu && (
+          <ul className="z-10 absolute right-12 top-[70px] w-48 bg-white shadow-md rounded-md p-4">
+            <Link href={"/create"}>
+              <li onClick={() => setOpenUserMenu(false)}>Create a post</li>
+            </Link>
+            <Link href={"/userposts"}>
+              <li onClick={() => setOpenUserMenu(false)}>My Post</li>
+            </Link>
+            <li className="cursor-pointer" onClick={() => signOut()}>
+              Sign out
+            </li>
+          </ul>
+        )}
         <div>
           <MobileMenu />
         </div>

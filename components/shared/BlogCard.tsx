@@ -1,8 +1,8 @@
+import { AiOutlineArrowRight } from "react-icons/ai";
 import { PostTypes } from "@/types/postTypes";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { AiOutlineArrowRight } from "react-icons/ai";
 import Overlay from "../ui/Overlay";
 import Tag from "../ui/Tag";
 
@@ -10,12 +10,14 @@ const BlogCard: React.FC<{ post: PostTypes }> = ({ post }) => {
   return (
     <article className="relative rounded-lg overflow-hidden">
       <div className="w-[1000px] h-[450px] relative">
-        <Image
-          src={post.img || ""}
-          fill
-          alt={`image for ${post.title}`}
-          className="object-cover"
-        />
+        {post.img && (
+          <Image
+            src={post.img}
+            fill
+            alt={`image for ${post.title}`}
+            className="object-cover"
+          />
+        )}
         <Overlay />
       </div>
 
@@ -30,7 +32,7 @@ const BlogCard: React.FC<{ post: PostTypes }> = ({ post }) => {
       </div>
 
       <Link
-        href={`/blog${post.id}`}
+        href={`/blog/${post.id}`}
         className="absolute bottom-0 right-0 bg-tertiary p-5 text-white rounded-tl-lg z-6 cursor-pointer"
       >
         <AiOutlineArrowRight size={30} />

@@ -18,17 +18,18 @@ const DeletePosts: React.FC<{ post: PostTypes }> = ({ post }) => {
 
   return (
     <div>
-      <Button aria="delete post" onClick={handleDelete} text="Delete" />
+      <Button aria="delete post" onClick={handleDelete} text="Delete" action />
+
       {showModal && (
         <>
           <div
-            onClick={() => setShowModal(false)}
             className="fixed inset-0 flex items-center justify-center z-50"
+            onClick={() => setShowModal(false)}
           >
             <div className="w-screen h-screen bg-black/40 absolute" />
             <div
-              onClick={(e) => e.stopPropagation()}
               className="bg-white p-6 rounded shadow-lg z-40"
+              onClick={(e) => e.stopPropagation()}
             >
               <p>Are you sure you want to delete this post?</p>
               <div className="flex gap-3 mt-5">
@@ -37,7 +38,7 @@ const DeletePosts: React.FC<{ post: PostTypes }> = ({ post }) => {
                   <Button aria="delete post" type="submit" text="Yes" />
                 </form>
                 <Button
-                  aria="cancle delete post"
+                  aria="cance delete post"
                   onClick={closeModal}
                   text="No"
                 />

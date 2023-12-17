@@ -1,12 +1,14 @@
 "use client";
 
-import { blogData } from "@/constants/blogData";
-import BlogCard from "./BlogCard";
+import { PostTypes } from "@/types/postTypes";
 import { useState } from "react";
 import Button from "../ui/Button";
+import BlogCard from "./BlogCard";
 
-export default function LatestPosts() {
-  const latestPosts = blogData.filter((item) => item.latestPost);
+const LatestPosts: React.FC<{ posts: PostTypes[] }> = ({ posts }) => {
+  const latestPosts = posts.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
   const [visibleBlogs, setVisibleBlogs] = useState(5);
 
   const showMoreBlogs = () => {
@@ -25,7 +27,7 @@ export default function LatestPosts() {
       </div>
       <div className="flex flex-col gap-10 h-full">
         {latestPosts.slice(0, visibleBlogs).map((post) => (
-          <BlogCard key={post.id} {...post} />
+          <BlogCard key={post.id} post={post} />
         ))}
         {latestPosts.length > visibleBlogs && (
           <div className="flex justify-center">
@@ -39,4 +41,5 @@ export default function LatestPosts() {
       </div>
     </section>
   );
-}
+};
+export default LatestPosts;

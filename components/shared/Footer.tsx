@@ -8,7 +8,7 @@ import {
   FaSquareXTwitter,
 } from "react-icons/fa6";
 import Route from "../ui/Route";
-import useMenuActive from "@/hooks/useMenuActive";
+// import useMenuActive from "@/hooks/useMenuActive";
 
 export default function Footer() {
   return (
@@ -27,7 +27,7 @@ export default function Footer() {
               <Route
                 route={link.route}
                 label={link.label}
-                isActive={useMenuActive(link.route)}
+                // isActive={useMenuActive(link.route)}
               />
             </li>
           ))}

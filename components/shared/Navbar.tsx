@@ -95,7 +95,7 @@ const Navbar: React.FC<NavbraProps> = ({ user }) => {
           </div>
         )}
         {openUserMenu && (
-          <ul className="z-10 absolute right-12 top-[70px] w-48 bg-white shadow-md rounded-md p-4">
+          <ul className="z-10 absolute right-12 top-[70px] w-48 md:block hidden bg-white shadow-md rounded-md p-4">
             <Link href={"/create"}>
               <li onClick={() => setOpenUserMenu(false)}>Create a post</li>
             </Link>

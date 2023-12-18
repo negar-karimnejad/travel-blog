@@ -1,14 +1,14 @@
 "use client";
-import { useEdgeStore } from "@/lib/edgestore";
-import { useEffect, useState } from "react";
-import { userTypes } from "@/types/userTypes";
 import { createPost } from "@/app/actions";
+import { useEdgeStore } from "@/lib/edgestore";
+import { userTypes } from "@/types/userTypes";
+import { useEffect, useState } from "react";
+import Button from "../ui/Button";
 import Form from "../ui/Form";
 import Input from "../ui/Input";
-import Button from "../ui/Button";
 import { SingleImageDropzone } from "../ui/SingleImageDropZone";
 
-export default function CreateForm({ user }: { user: userTypes }) {
+const CreateForm = ({ user }: { user: userTypes }) => {
   const [file, setFile] = useState<File>();
   const { edgestore } = useEdgeStore();
   const [imagePath, setImagePath] = useState("");
@@ -21,6 +21,7 @@ export default function CreateForm({ user }: { user: userTypes }) {
       setImagePath(res.url);
     }
   };
+
   useEffect(() => {
     if (file) {
       uploadImageHandler();
@@ -29,9 +30,9 @@ export default function CreateForm({ user }: { user: userTypes }) {
 
   return (
     <div className="mt-8 mx-auto w-full max-w-3xl px-4">
-      <div className="py-8 shadow rounded-lg px-10 bg-white">
-        <h1 className="text-center font-extrabold text-2xl mt-10">
-          Create a Post ✍
+      <div className="bg-white py-8 shadow rounded-lg px-10">
+        <h1 className="text-center text-2xl font-extrabold mb-10">
+          Create a Post ✍️
         </h1>
         {!user ? (
           <h2 className="text-center text-xl font-extrabold uppercase">
@@ -47,11 +48,10 @@ export default function CreateForm({ user }: { user: userTypes }) {
               height={200}
               value={file}
             />
-
             <Form
               action={createPost}
-              onSubmit={() => setFile(undefined)}
               className="flex flex-col gap-5 mt-5"
+              onSubmit={() => setFile(undefined)}
             >
               <Input type="hidden" name="image" value={imagePath} />
               <Input name="title" type="text" placeholder="Enter Title" />
@@ -71,12 +71,14 @@ export default function CreateForm({ user }: { user: userTypes }) {
                   Choose Tag
                 </option>
                 <option value="Adventure">Adventure</option>
-                <option value="Culture">Colture</option>
+                <option value="Culture">Culture</option>
                 <option value="Journey">Journey</option>
                 <option value="Discovery">Discovery</option>
-                <option value="Wonderlust">Wonderlust</option>
+                <option value="Wanderlust">Wanderlust</option>
               </select>
-              <Input name="email" type="hidden" value={user?.email || ""} />{" "}
+
+              <Input name="email" type="hidden" value={user?.email || ""} />
+
               <Button type="submit" text="Create" aria="create blog" />
             </Form>
           </>
@@ -84,4 +86,6 @@ export default function CreateForm({ user }: { user: userTypes }) {
       </div>
     </div>
   );
-}
+};
+
+export default CreateForm;

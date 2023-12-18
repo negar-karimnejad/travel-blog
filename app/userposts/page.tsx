@@ -20,7 +20,7 @@ export default async function page() {
   const posts = await getData(session?.user?.email || "");
 
   return (
-    <div className="w-full h-screen flex justify-center items-center">
+    <div className="w-full h-full flex justify-center items-center">
       {!session?.user ? (
         <h1 className="text-3xl font-extrabold">Sign in to view your post!</h1>
       ) : (

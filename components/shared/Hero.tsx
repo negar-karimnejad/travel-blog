@@ -1,5 +1,5 @@
 import { PostTypes } from "@/types/postTypes";
-import { formatDate } from "@/utils/FormatDate";
+import { formatDate } from "../../utils/formatDate";
 import Image from "next/image";
 import Link from "next/link";
 import Overlay from "../ui/Overlay";

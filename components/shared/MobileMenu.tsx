@@ -16,10 +16,10 @@ import useMenuActive from "../../hooks/useMenuActive";
 import Button from "../ui/Button";
 import Route from "../ui/Route";
 
-interface NavbraProps {
+interface MobileMenuProps {
   user: User;
 }
-const MobileMenu: React.FC<NavbraProps> = ({ user }) => {
+const MobileMenu: React.FC<MobileMenuProps> = ({ user }) => {
   const router = useRouter();
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
@@ -95,7 +95,13 @@ const MobileMenu: React.FC<NavbraProps> = ({ user }) => {
                 <Link href={"/userposts"}>
                   <li onClick={() => setOpenMobileMenu(false)}>My Post</li>
                 </Link>
-                <li className="cursor-pointer" onClick={() => signOut()}>
+                <li
+                  className="cursor-pointer"
+                  onClick={() => {
+                    signOut();
+                    setOpenMobileMenu(false);
+                  }}
+                >
                   Sign out
                 </li>
               </ul>

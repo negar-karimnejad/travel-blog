@@ -1,6 +1,5 @@
 "use client";
 import { navLinks } from "@/constants";
-import useMenuActive from "@/hooks/useMenuActive";
 import Link from "next/link";
 import { FaFacebookSquare } from "react-icons/fa";
 import {
@@ -9,6 +8,7 @@ import {
   FaSquareXTwitter,
 } from "react-icons/fa6";
 import Route from "../ui/Route";
+import useMenuActive from "@/hooks/useMenuActive";
 
 export default function Footer() {
   return (

@@ -12,9 +12,9 @@ import {
 import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import useMenuActive from "../../hooks/useMenuActive";
 import Button from "../ui/Button";
 import Route from "../ui/Route";
+import useMenuActive from "@/hooks/useMenuActive";
 
 interface MobileMenuProps {
   user: User;

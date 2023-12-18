@@ -108,7 +108,7 @@ const Navbar: React.FC<NavbraProps> = ({ user }) => {
           </ul>
         )}
         <div>
-          <MobileMenu />
+          <MobileMenu user={user} />
         </div>
       </div>
     </nav>

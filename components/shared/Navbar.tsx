@@ -8,10 +8,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import useMenuActive from "../../hooks/useMenuActive";
 import Button from "../ui/Button";
 import Route from "../ui/Route";
 import MobileMenu from "./MobileMenu";
+import useMenuActive from "@/hooks/useMenuActive";
 
 interface NavbraProps {
   user: User;

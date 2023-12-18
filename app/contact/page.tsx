@@ -21,7 +21,7 @@ export default function Contact() {
       </div>
       <div className="p-10 leading-8 text-lg mt-10 relative m-auto rounded-lg text-center">
         <h1 className="text-4xl font-extrabold w-full text-center uppercase text-primary mb-10">
-          Let's Discuss
+          Let&apos;s Discuss
         </h1>
         <form className="flex flex-col w-full gap-5">
           <div className="flex gap-5 max-sm:flex-col">

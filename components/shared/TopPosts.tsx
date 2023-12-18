@@ -20,8 +20,8 @@ const TopPosts: React.FC<{ posts: PostTypes[] }> = ({ posts }) => {
       </div>
       <div className="flex flex-col gap-12 h-full items-center">
         {topPosts.map((post) => (
-          <Link href={`blog/${post.id}`}>
-            <article key={post.id}>
+          <Link href={`blog/${post.id}`} key={post.id}>
+            <article>
               <div className="relative cursor-pointer">
                 <Image
                   src={post.img as string}

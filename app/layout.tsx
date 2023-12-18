@@ -4,7 +4,7 @@ import AuthProvider from "@/context/AuthProvider";
 import type { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import { Roboto } from "next/font/google";
-import { EdgeStoreProvider } from '../lib/edgestore';
+import { EdgeStoreProvider } from "../lib/edgestore";
 import { authOptions } from "./utils/auth";
 import "./globals.css";
 

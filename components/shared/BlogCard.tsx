@@ -1,8 +1,8 @@
-import { AiOutlineArrowRight } from "react-icons/ai";
 import { PostTypes } from "@/types/postTypes";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { AiOutlineArrowRight } from "react-icons/ai";
 import Overlay from "../ui/Overlay";
 import Tag from "../ui/Tag";
 

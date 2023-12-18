@@ -10,7 +10,6 @@ export async function createPost(formData:FormData) {
     const img=formData.get("image") as string
     const cat=formData.get("category") as string
     const userEmail=formData.get("email") as string
-    console.log(formData);
 
     await prisma.blog.create({
         data:{

@@ -1,8 +1,10 @@
 "use client";
 
 import { navLinks } from "@/constants";
+import { User } from "@prisma/client";
 import clsx from "clsx";
 import { signOut } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -10,8 +12,6 @@ import useMenuActive from "../../hooks/useMenuActive";
 import Button from "../ui/Button";
 import Route from "../ui/Route";
 import MobileMenu from "./MobileMenu";
-import Image from "next/image";
-import { User } from "@prisma/client";
 
 interface NavbraProps {
   user: User;

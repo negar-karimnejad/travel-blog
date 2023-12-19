@@ -55,16 +55,19 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ user }) => {
               </div>
             </div>
             <ul className="flex items-center justify-center gap-5 flex-col mt-5  py-10 border-b">
-              {navLinks.map((link, index) => (
-                <li key={index}>
-                  <Route
-                    route={link.route}
-                    label={link.label}
-                    onClick={() => setOpenMobileMenu(false)}
-                    isActive={useMenuActive(link.route)}
-                  />
-                </li>
-              ))}
+              {navLinks.map((link, index) => {
+                const isActive = useMenuActive(link.route);
+                return (
+                  <li key={index}>
+                    <Route
+                      route={link.route}
+                      label={link.label}
+                      onClick={() => setOpenMobileMenu(false)}
+                      isActive={isActive}
+                    />
+                  </li>
+                );
+              })}
             </ul>
             {!user ? (
               <div className="flex flex-col py-5 gap-5 flex-1">

@@ -58,15 +58,18 @@ const Navbar: React.FC<NavbraProps> = ({ user }) => {
           </Link>
         </div>
         <ul className="flex items-center justify-center gap-16 flex-2 max-md:hidden">
-          {navLinks.map((link, index) => (
-            <li key={index}>
-              <Route
-                route={link.route}
-                label={link.label}
-                isActive={useMenuActive(link.route)}
-              />
-            </li>
-          ))}
+          {navLinks.map((link, index) => {
+            const isActive = useMenuActive(link.route);
+            return (
+              <li key={index}>
+                <Route
+                  route={link.route}
+                  label={link.label}
+                  isActive={isActive}
+                />
+              </li>
+            );
+          })}
         </ul>
         {user ? (
           <div className="flex gap-5 items-center flex-1 justify-end max-md:hidden">

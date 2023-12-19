@@ -22,15 +22,18 @@ export default function Footer() {
           </Link>
         </div>
         <ul className="flex items-center justify-center gap-16 flex-1 max-md:flex-col max-md:gap-5">
-          {navLinks.map((link, index) => (
-            <li key={index}>
-              <Route
-                route={link.route}
-                label={link.label}
-                isActive={useMenuActive(link.route)}
-              />
-            </li>
-          ))}
+          {navLinks.map((link, index) => {
+            const isActive = useMenuActive(link.route);
+            return (
+              <li key={index}>
+                <Route
+                  route={link.route}
+                  label={link.label}
+                  isActive={isActive}
+                />
+              </li>
+            );
+          })}
         </ul>
         <div className="flex gap-5 flex-1 justify-center text-2xl">
           <FaFacebookSquare />

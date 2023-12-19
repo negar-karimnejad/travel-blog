@@ -1,5 +1,5 @@
 
-# <p align="center">TRAVEL TO THE GREAT BEYOND AND NEVER STOP!</p>
+# <p align="center" color="#eb5e28">TRAVEL TO THE GREAT BEYOND AND NEVER STOP!</p>
 
 <p align="center">To support me, give star⭐ to this repository please.
 I appreciate your support in advance. ❤</p>

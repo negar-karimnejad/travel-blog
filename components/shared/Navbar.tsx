@@ -110,7 +110,7 @@ const Navbar: React.FC<NavbraProps> = ({ user }) => {
             </li>
           </ul>
         )}
-        <div>
+        <div className="md:hidden">
           <MobileMenu user={user} />
         </div>
       </div>

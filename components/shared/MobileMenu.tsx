@@ -29,7 +29,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ user }) => {
 
   return (
     <>
-      <div className="md:hidden" onClick={mobileMenuHandle}>
+      <div onClick={mobileMenuHandle}>
         {openMobileMenu ? <CgClose size={25} /> : <CgMenuGridO size={25} />}
       </div>
       {openMobileMenu ? (

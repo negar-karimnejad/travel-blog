@@ -6,18 +6,18 @@ import clsx from "clsx";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Button from "../ui/Button";
 import Route from "../ui/Route";
 import MobileMenu from "./MobileMenu";
-import useMenuActive from "@/hooks/useMenuActive";
 
 interface NavbraProps {
   user: User;
 }
 
 const Navbar: React.FC<NavbraProps> = ({ user }) => {
+  const pathname = usePathname();
   const router = useRouter();
   const [isScrolling, setIsScrolling] = useState(false);
   const [openUserMenu, setOpenUserMenu] = useState(false);
@@ -35,16 +35,6 @@ const Navbar: React.FC<NavbraProps> = ({ user }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const route = navLinks.map((link, index) => {
-    const isActive = useMenuActive(link.route);
-
-    return (
-      <li key={index}>
-        <Route route={link.route} label={link.label} isActive={isActive} />
-      </li>
-    );
-  });
 
   return (
     <nav
@@ -68,9 +58,16 @@ const Navbar: React.FC<NavbraProps> = ({ user }) => {
           </Link>
         </div>
         <ul className="flex items-center justify-center gap-16 flex-2 max-md:hidden">
-          {route}
+          {navLinks.map((link, index) => (
+            <li key={index}>
+              <Route
+                route={link.route}
+                label={link.label}
+                isActive={pathname === link.route ? true : false}
+              />
+            </li>
+          ))}
         </ul>
-
         {user ? (
           <div className="flex gap-5 items-center flex-1 justify-end max-md:hidden">
             <h1 className="text-primary font-extrabold">{user.name}</h1>
@@ -110,7 +107,7 @@ const Navbar: React.FC<NavbraProps> = ({ user }) => {
             </li>
           </ul>
         )}
-        <div className="md:hidden">
+        <div>
           <MobileMenu user={user} />
         </div>
       </div>

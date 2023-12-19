@@ -11,33 +11,25 @@ import {
 
 import { User } from "@prisma/client";
 import { signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Button from "../ui/Button";
 import Route from "../ui/Route";
-import useMenuActive from "@/hooks/useMenuActive";
 
 interface MobileMenuProps {
   user: User;
 }
 const MobileMenu: React.FC<MobileMenuProps> = ({ user }) => {
   const router = useRouter();
+  const pathname = usePathname();
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
   const mobileMenuHandle = () => {
     setOpenMobileMenu(!openMobileMenu);
   };
-  const route = navLinks.map((link, index) => {
-    const isActive = useMenuActive(link.route);
 
-    return (
-      <li key={index}>
-        <Route route={link.route} label={link.label} isActive={isActive} />
-      </li>
-    );
-  });
   return (
     <>
-      <div onClick={mobileMenuHandle}>
+      <div className="md:hidden" onClick={mobileMenuHandle}>
         {openMobileMenu ? <CgClose size={25} /> : <CgMenuGridO size={25} />}
       </div>
       {openMobileMenu ? (
@@ -63,9 +55,17 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ user }) => {
               </div>
             </div>
             <ul className="flex items-center justify-center gap-5 flex-col mt-5  py-10 border-b">
-              {route}
+              {navLinks.map((link, index) => (
+                <li key={index}>
+                  <Route
+                    route={link.route}
+                    label={link.label}
+                    onClick={() => setOpenMobileMenu(false)}
+                    isActive={pathname === link.route ? true : false}
+                  />
+                </li>
+              ))}
             </ul>
-            
             {!user ? (
               <div className="flex flex-col py-5 gap-5 flex-1">
                 <Button

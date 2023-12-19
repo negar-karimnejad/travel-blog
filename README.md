@@ -7,7 +7,6 @@ I appreciate your support in advance. ❤</p>
 <img src="public/assets/readme.png"/>
 
 
-
 ### <p align="center">🔧Technologies:</p>
 <div align="center" >
   

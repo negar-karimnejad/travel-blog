@@ -11,7 +11,7 @@ import React, { useEffect, useState } from "react";
 import Button from "../ui/Button";
 import Route from "../ui/Route";
 import MobileMenu from "./MobileMenu";
-// import useMenuActive from "@/hooks/useMenuActive";
+import useMenuActive from "@/hooks/useMenuActive";
 
 interface NavbraProps {
   user: User;
@@ -63,7 +63,7 @@ const Navbar: React.FC<NavbraProps> = ({ user }) => {
               <Route
                 route={link.route}
                 label={link.label}
-                // isActive={useMenuActive(link.route)}
+                isActive={useMenuActive(link.route)}
               />
             </li>
           ))}

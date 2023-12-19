@@ -14,7 +14,7 @@ import { signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Button from "../ui/Button";
 import Route from "../ui/Route";
-// import useMenuActive from "@/hooks/useMenuActive";
+import useMenuActive from "@/hooks/useMenuActive";
 
 interface MobileMenuProps {
   user: User;
@@ -61,7 +61,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ user }) => {
                     route={link.route}
                     label={link.label}
                     onClick={() => setOpenMobileMenu(false)}
-                    // isActive={useMenuActive(link.route)}
+                    isActive={useMenuActive(link.route)}
                   />
                 </li>
               ))}

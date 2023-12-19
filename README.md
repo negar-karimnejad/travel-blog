@@ -23,4 +23,5 @@ I appreciate your support in advance. ❤</p>
 
 <p align="center">--------------------------------------------------------------</p>
   
-<p align="center">You can visit and explore in the ExploreX.</p>
+<p align="center">You can visit and explore in the <a href="https://travel-blog-plum.vercel.app/" target="_blank">ExploreX</a>.</p>
+

@@ -11,6 +11,16 @@ import Route from "../ui/Route";
 import useMenuActive from "@/hooks/useMenuActive";
 
 export default function Footer() {
+  const route = navLinks.map((link, index) => {
+    const isActive = useMenuActive(link.route);
+
+    return (
+      <li key={index}>
+        <Route route={link.route} label={link.label} isActive={isActive} />
+      </li>
+    );
+  });
+  
   return (
     <footer className="py-5 w-full bg-secondary text-white mt-10">
       <div className="w-[95%] mx-auto max-w-[1450px] flex items-center justify-between pb-5 border-b border-gray-300 border-opacity-20 max-md:flex-col max-md:gap-8">
@@ -22,18 +32,7 @@ export default function Footer() {
           </Link>
         </div>
         <ul className="flex items-center justify-center gap-16 flex-1 max-md:flex-col max-md:gap-5">
-          {navLinks.map((link, index) => {
-            const isActive = useMenuActive(link.route);
-            return (
-              <li key={index}>
-                <Route
-                  route={link.route}
-                  label={link.label}
-                  isActive={isActive}
-                />
-              </li>
-            );
-          })}
+          {route}
         </ul>
         <div className="flex gap-5 flex-1 justify-center text-2xl">
           <FaFacebookSquare />
